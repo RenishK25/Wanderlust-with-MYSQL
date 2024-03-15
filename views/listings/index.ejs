@@ -1,0 +1,78 @@
+
+<% layout('/layouts/boilerplate') -%>
+
+<div class="filters">
+
+   <div class="filter">
+      <div><i class="fa-solid fa-mug-hot"></i></div>
+      <p>Bed & Breakfast</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-tent"></i></div>
+      <p>Camping</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-city"></i></div>
+      <p>Iconic cities</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castle</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+      <p>Trending</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-umbrella-beach"></i></div>
+      <p>Beach</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-water-ladder"></i></div>
+      <p>Amazing pools</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-regular fa-snowflake"></i></div>
+      <p>Arctic</p>
+   </div>
+
+   <div class="filter">
+      <div><i class="fa-solid fa-caravan"></i></div>
+      <p>Camper vans</p>
+   </div>
+
+   <div class="filter-btn ms-auto">
+      <div class="form-check form-switch form-check-reverse">
+         <input class="form-check-input" type="checkbox" id="show_gst_btn">
+         <label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>
+       </div>
+   </div>
+
+</div>
+
+<!-- <h1>All List</h1> -->
+
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+
+   <% for(list of lists){ %>
+   <a class="list-link" href="list/<%= list.id %>">
+      <div class="card col list-card">
+      <img class="card-img-top" src="<%= list.image.url %>" alt="Card image cap" style="height: 19rem;">
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text"> <b><%= list.title %></b> <br>
+         &#8377; <%= list.price.toLocaleString("en-IN") %> <span class="taxes"> +18% Gst</span>
+      </p>
+      </div>
+    </div>
+   </a>
+   <% } %>
+    
+</div>

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md bg-body-light sticky-top">
+    <div class="container container-fluid">
+      <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/">Home</a>
+          <!-- <a class="nav-link" href="/">All Listing</a> -->
+          <a class="nav-link" href="/list/add">Add listing</a>
+        </div>
+        
+        <div class="navbar-nav nav-menu ms-auto">
+          
+          <div class="nav-link profile" href="/">
+            <i class="fa-solid fa-list"></i>
+            <% if(user && user != undefined){ %>
+              <%= user.username %>
+            <% }else{ %>
+              <i class="fa-solid fa-user"></i>
+            <% } %>
+            <ul class="navbar-nav-menu">
+              <% if(user && user != undefined){ %>
+                <li><a href="/logout"> Logout </a></li>
+              <% }else{ %>
+              <li><a href="/login"> Log in </a></li>
+              <li><a href="/signup"> Sign up </a></li>
+             <% } %>
+            </ul>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </nav>

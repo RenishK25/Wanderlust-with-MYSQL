@@ -1,0 +1,54 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+    <form action="http://localhost:3000/list/<%= list.id %>/edit?_method=PUT" method="post">    
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>Edit List</h1>
+                <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                    <input type="text" name="list[title]" placeholder="title" value="<%= list.title %>" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="list[description]" class="form-control" placeholder="description">
+                        <%= list.description %>
+                    </textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <br>
+                    <a target="_blank" href="<%= list.image.url %>">
+                        <img src="<%= list.image.url %>" style="height: 200px; width: 350px;">
+                    </a>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Uplode Image</label>
+                    <input type="file" name="list[image]" id="image" class="form-control" placeholder="image">
+                        <div class="invalid-feedback">
+                            Please choose a Description.
+                        </div>
+                    </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" name="list[price]" placeholder="price" value="<%= list.price %>" class="form-control">
+                    </div>
+                    <div class="col-md-8">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="list[location]" placeholder="location" value="<%= list.location %>" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="list[country]" placeholder="country" value="<%= list.country %>" class="form-control">
+                </div>
+        
+                <button class="form-control btn btn-danger">Save</button>
+                <br>
+                <br>
+            </div>
+        </div>
+     </form>
+</body>
