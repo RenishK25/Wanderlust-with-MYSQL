@@ -36,11 +36,11 @@
 
     <% if(user && list.owner.equals(user)){ %>
     <div class="col-2 offset-3 d-flex mb-3">
-        <form action="http://localhost:3000/list/<%= list._id %>/edit">
+        <form action="/list/<%= list._id %>/edit">
             <button class="btn btn-danger"> Edit </button>
         </form>
 
-        <form action="http://localhost:3000/list/<%= list._id %>?_method=DELETE" method="post">
+        <form action="/list/<%= list._id %>?_method=DELETE" method="post">
             <button class="btn btn-dark offset-2" onclick="return delete_alert()"> Delete </button>
         </form>
     </div>
@@ -49,7 +49,7 @@
     <div  class="col-8 offset-3">
         <hr>
         <h4> Leave a Review </h4>
-        <form action="http://localhost:3000/list/<%= list.id %>/review" class="needs-validation" novalidate method="post">
+        <form action="/list/<%= list.id %>/review" class="needs-validation" novalidate method="post">
             <div class="foem-group">
                     <!-- <input type="range" name="review[rating]" min="1" max="5" class="" required>
                     <div class="invalid-feedback"> Please Enter Rating. </div>
