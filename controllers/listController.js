@@ -8,7 +8,6 @@ module.exports.create = (req, res) => {
     let url = req.file.path;
     let filename = req.file.filename
     let list = new List(req.body.list);
-    // console.log(list);
     list.owner = req.user._id;
     list.image = {url, filename};
     // console.log(list);
