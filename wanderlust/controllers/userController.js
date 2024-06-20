@@ -5,8 +5,9 @@ module.exports.loginForm = (req, res) => {
 }; 
 
 module.exports.login = (req, res) => {
+    // console.log("req.user-",req.user);
     req.flash("success", "Welcome to Wanderlust");
-    let redirectUrl = res.locals.redirectUrl.split('/').slice(0, 3).join('/') || "/";
+    let redirectUrl = res.locals.redirectUrl || "/";
     res.redirect(redirectUrl);
 };
 

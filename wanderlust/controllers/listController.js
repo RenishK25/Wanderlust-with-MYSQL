@@ -1,6 +1,7 @@
 const List = require('../models/listing');
 
 module.exports.add = (req, res) => {
+    console.log(res.locals.redirectUrl);
     res.render("listings/create.ejs");
 }
 

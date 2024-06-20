@@ -1,0 +1,196 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+.nav-menu{
+    position: relative;
+    /* border: 2px solid; */
+}
+.navbar-nav-menu{
+    position: absolute;
+    top: 40px;
+    left: -140px;
+    width: 200px;
+    list-style: none;
+    text-decoration: none;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    background-color: #f6f2f2;
+    display: none;
+    text-align: left;
+    /* border: 2px solid; */
+}
+
+ul.navbar-nav-menu li{
+    height: 30px;
+    padding-left: 1.2rem;
+}
+
+ul.navbar-nav-menu :hover{
+    background-color: #DDDDDD;
+}
+
+div.profile i{
+    margin-right: 10px;
+}
+div.nav-menu div:hover .navbar-nav-menu{
+    display: block;
+    /* background-color: red; */
+}
+
+.navbar-nav-menu li a{
+    text-decoration: none;
+    color: #222222;
+}
+
+
+/* <------------ Footer Style   -----------> */
+.f-info-links a{
+    text-decoration: none;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* <------------ Card Style   -----------> */
+
+.list-card{
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0px !important;
+}
+
+.card-text p{
+    font-weight: 400;
+}
+
+.card-text span{
+    color: #fe424d;
+    font-style: italic;
+    font-size: .7rem;
+    display: none;
+}
+
+.list-link{
+    text-decoration: none;
+}
+/* <------------ Card Effect   -----------> */
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.show-img{
+    height: 350px;
+}
+
+.review-body{
+    padding: 2px 0 0px 16px !important;
+}
+
+
+/* <===================================================================================================> */
+
+.filters{
+    display: flex;
+    color: #717171;
+}
+
+.filters i{
+    font-size: 1.5rem;
+}
+
+.filter:hover{
+    color: black;
+}
+
+.filters p{
+    font-size: .8rem;
+}
+
+.filter{
+    text-align: center;
+    margin-right: 1.5rem;
+}
+
+.filter-btn{
+    border: 1px solid #DDDDDD;
+    margin-left: 1rem;
+    /* height: 25px; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    padding: 5px 5px 0 5px;
+    font-size: .8rem;
+    color: black;
+
+}
+
+.form-check-label{
+    margin-right: 5px;
+}
+
+.form-switch .form-check-input{
+    width: 4em;
+    height: 2em;
+    margin: 0px;
+}

@@ -20,7 +20,7 @@ module.exports.saveRedirectUrl = (req, res, next) =>{
     // console.log("REQUEST========",req.session.redirectUrl);
     if(req.session.redirectUrl){
         // console.log("req.session.redirectUrl",req.session.redirectUrl);
-        res.locals.redirectUrl = req.session.redirectUrl;
+        return res.locals.redirectUrl = req.session.redirectUrl;
     }
     next();
 }
