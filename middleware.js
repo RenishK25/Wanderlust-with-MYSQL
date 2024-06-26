@@ -1,7 +1,10 @@
-const List = require('./models/listing');
+// const List = require('./models/listing');
+const db = require('./DB/connection.js');
+const List = db.list;
+const Review = db.review;
+
 const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema, reviewSchema } = require('./schema.js');
-const Review = require("./models/review");
 
 
 module.exports.isLoggedin = (req, res, next) =>{
@@ -27,8 +30,8 @@ module.exports.saveRedirectUrl = (req, res, next) =>{
 
 module.exports.isOwner = async (req, res, next) => {
     let { id } = req.params;
-    let list = await List.findById(id);
-    if(res.locals.user.id && !list.owner.equals(res.locals.user.id)){
+    let list = await List.findByPk(id);
+    if(res.locals.user.id && list.ownerId != res.locals.user.id){
         req.flash("error", "You are't owner of this list");
         return res.redirect("/list/"+id);    
     }
@@ -37,8 +40,9 @@ module.exports.isOwner = async (req, res, next) => {
 
 module.exports.isAuthor = async (req, res, next) => {
     let { id, reviewId } = req.params;
-    let review = await Review.findById(reviewId);
-    if(!review.author.equals(res.locals.user.id)){
+    let review = await Review.findByPk(reviewId);
+
+    if(!review.authorId == res.locals.user.id){
         req.flash("error", "You are't author of this review");
         return res.redirect("/list/"+id);    
     }

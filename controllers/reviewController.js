@@ -1,22 +1,29 @@
-const List = require('../models/listing');
-const Review = require("../models/review");
+const db = require('../DB/connection');
+const List = db.list;
+const Review = db.review;
 
-module.exports.show = async(req, res) => {
-    let list = await List.findById(req.params.id);
-    let newReview = new Review(req.body.review);
-    newReview.author = res.locals.user._id
-    list.reviews.push(newReview);
+module.exports.create = async(req, res) => {
+    
+    // const [affectedRows, [updatedList]] = await List.update(updatedFields, {
+    //     where: { id },
+    //     returning: true,
+    //   });
+    
+    let review = req.body.review;
+    review.authorId = res.locals.user.id;
+    review.listId = req.params.id
+    console.log(review);
+    let data = await Review.create(review);
 
-    await newReview.save();
-    await list.save();
-    res.redirect("/list/"+req.params.id);
+    req.flash("success", "Review Store Successful");
+    res.redirect(`/list/${req.params.id}`);
 }
 
 module.exports.destroy = async (req, res) => {
     let { id, reviewId} = req.params;
     
-    await List.findByIdAndUpdate(id, {$pull : { reviews : reviewId}});
-    await Review.findByIdAndDelete(reviewId);
+    await Review.destroy({where :{id : reviewId}});
+
     req.flash("success", "Review Delete Successful");
     res.redirect(`/list/${req.params.id}`);
 }

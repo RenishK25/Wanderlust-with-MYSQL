@@ -9,7 +9,7 @@
             <!-- <div class="card-img-overlay"></div> -->
             <div class="card-body">
             <p class="card-text">
-                Owner By : <%= list.owner.username %>
+                Owner By : <%= list.owner.name %>
             </p>
 
             <p class="card-text"> 
@@ -24,7 +24,8 @@
 
             </p>
             <p class="card-text">
-            &#8377; <%= list.price.toLocaleString("en-IN") %>
+            &#8377; 
+            <%= list.price?.toLocaleString("en-IN") %>
 
             </p>
 
@@ -33,14 +34,13 @@
 
         
     </div>
-
     <% if(user && list.owner.equals(user)){ %>
     <div class="col-2 offset-3 d-flex mb-3">
-        <form action="/list/<%= list._id %>/edit">
+        <form action="/list/<%= list.id %>/edit">
             <button class="btn btn-danger"> Edit </button>
         </form>
 
-        <form action="/list/<%= list._id %>?_method=DELETE" method="post">
+        <form action="/list/<%= list.id %>?_method=DELETE" method="post">
             <button class="btn btn-dark offset-2" onclick="return delete_alert()"> Delete </button>
         </form>
     </div>
@@ -83,16 +83,16 @@
             <br>
         </form>
         
-        <% if(list.reviews != "" && list.reviews != null){ %>
+        <% if(list.Reviews != "" && list.Reviews != null){ %>
             <hr>
             <p> <b>All Reviews</b> </p>
 
             <div class="row">
-                <% for(review of list.reviews){ %>
+                <% for(review of list.Reviews){ %>
                     <div class="col-5 ms-3 mb-3">
                         <div class="card">
                             <div class="card-body review-body">
-                                <div class="card-title"><%= review.author.username %></div>
+                                <div class="card-title"><%= review.author.name %></div>
                                 <div class="card-text"><p class="starability-result" data-rating="<%= review.rating %>"></p></div>
                                 <div class="card-text"><%= review.comment %></div>
                                 <form class="mb-2" method="post" action="/list/<%= list.id %>/review/<%= review.id %>?_method=DELETE">

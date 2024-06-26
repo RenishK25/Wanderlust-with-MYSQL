@@ -1,4 +1,10 @@
-const User = require("../models/user.js");
+// const User = require("../models/user_m.js");
+const { Op, QueryTypes } = require("sequelize");
+const db = require("../DB/connection");
+// const user = require("../DB/user");
+const User = db.user;
+const Sequelize = db.Sequelize;
+// const Op = db.Sequelize.Op;
 
 module.exports.loginForm = (req, res) => {
     res.render("./users/login.ejs");
@@ -6,8 +12,12 @@ module.exports.loginForm = (req, res) => {
 
 module.exports.login = (req, res) => {
     req.flash("success", "Welcome to Wanderlust");
-    let redirectUrl = res.locals.redirectUrl.split('/').slice(0, 3).join('/') || "/";
-    res.redirect(redirectUrl);
+    if(res.locals.redirectUrl != undefined){
+        let redirectUrl = res.locals.redirectUrl.split('/').slice(0, 3).join('/') || "/";
+        res.redirect(redirectUrl);
+    }
+    res.redirect("/");
+    
 };
 
 module.exports.signupForm = (req, res) => {    
@@ -16,15 +26,14 @@ module.exports.signupForm = (req, res) => {
 
 module.exports.signup = async(req, res) => {    
     try{
-        let {email, username, password} = req.body;
-        const newUser = new User({email, username});
+        let newUser = await User.create(req.body);
 
-        let userNew = await User.register(newUser, password);
-        console.log(userNew);
-        req.login(userNew, (err) => {
+        console.log(newUser);
+        req.login(newUser, (err) => {
             if(err){
                 next(err);
             }
+            req.user = newUser;
             req.flash("success", "Welcome to Wanderlust");
             res.redirect("/");
         });

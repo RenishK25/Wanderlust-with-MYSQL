@@ -1,6 +1,6 @@
 <% layout('/layouts/boilerplate') -%>
 <body>
-    <form action="/list/<%= list.id %>/edit?_method=PUT" method="post">    
+    <form action="/list/<%= list.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data">    
         <div class="row">
             <div class="col-8 offset-2">
                 <h1>Edit List</h1>
@@ -10,9 +10,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="list[description]" class="form-control" placeholder="description">
-                        <%= list.description %>
-                    </textarea>
+                    <textarea name="list[description]" class="form-control" placeholder="description"><%= list.description %></textarea>
                 </div>
 
                 <div class="mb-3">

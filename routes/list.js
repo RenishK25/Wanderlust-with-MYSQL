@@ -20,6 +20,6 @@ router.route("/:id")
 router.route("/:id/edit")
     .get(isLoggedin, isOwner, listController.edit)
     
-    .put(isLoggedin, isOwner, listController.update);
+    .put(isLoggedin, isOwner, upload.single("list[image]"), listController.update);
 
 module.exports = router;
